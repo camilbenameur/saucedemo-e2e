@@ -1,0 +1,16 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Dépendances et sorties
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# Système
+Thumbs.db
+desktop.ini
+.DS_Store
