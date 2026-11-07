@@ -1,0 +1,15 @@
+{
+  "name": "saucedemo-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tests de bout en bout automatisés de https://www.saucedemo.com/",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke --project=chromium",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/node": "26.6.6"
+  }
+}
