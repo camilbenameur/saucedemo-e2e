@@ -1,0 +1,46 @@
+name: Régression
+
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: 'Filtre sur les étiquettes (vide = @regression)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  disponibilite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: curl --fail --silent --show-error --max-time 30 -o /dev/null -w '%{http_code}\n' "${BASE_URL:-https://www.saucedemo.com}/"
+
+  regression:
+    needs: disponibilite
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright:v1.65.0-noble
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, firefox, webkit]
+    env:
+      HOME: /root
+      GREP: ${{ inputs.grep || '@regression' }}
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm ci
+      - run: npx playwright test --grep "$GREP" --project=${{ matrix.project }}
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: rapport-${{ matrix.project }}
+          path: |
+            playwright-report/
+            test-results/junit.xml
