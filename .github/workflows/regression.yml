@@ -12,12 +12,18 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 jobs:
   disponibilite:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    outputs:
+      playwright: ${{ steps.version.outputs.playwright }}
     steps:
+      - uses: actions/checkout@v7
+      - id: version
+        run: echo "playwright=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")" >> "$GITHUB_OUTPUT"
       - run: curl --fail --silent --show-error --max-time 30 -o /dev/null -w '%{http_code}\n' "${BASE_URL:-https://www.saucedemo.com}/"
 
   regression:
@@ -25,7 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     container:
-      image: mcr.microsoft.com/playwright:v1.65.0-noble
+      image: ghcr.io/camilbenameur/saucedemo-e2e:${{ needs.disponibilite.outputs.playwright }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
       matrix:

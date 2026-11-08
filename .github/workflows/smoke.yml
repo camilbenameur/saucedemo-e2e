@@ -6,13 +6,28 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      playwright: ${{ steps.version.outputs.playwright }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: version
+        run: echo "playwright=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")" >> "$GITHUB_OUTPUT"
+
   smoke:
+    needs: version
     runs-on: ubuntu-latest
     timeout-minutes: 10
     container:
-      image: mcr.microsoft.com/playwright:v1.65.0-noble
+      image: ghcr.io/camilbenameur/saucedemo-e2e:${{ needs.version.outputs.playwright }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7
       - run: npm ci
