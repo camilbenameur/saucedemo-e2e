@@ -9,3 +9,25 @@ Version du 07/11/2026. État : en cours, rien n'est exécuté à ce jour. Auteur
 - **Packaging** : image officielle Playwright et `docker-compose.yml`.
 - **Reporting** : rapport HTML et JUnit XML.
 - **Mes choix** (priorités, seuils, fréquence du cron) sont des valeurs de départ, à réviser après les premiers runs.
+
+## 2. Objet et références
+
+**Objet** : définir ce qu'on teste, comment, quand et avec quels critères. **Objet de test** : le site
+`https://www.saucedemo.com/`, un site tiers qui peut changer sans prévenir.
+
+**Méthode** : rubriques inspirées de l'ISTQB Foundation Level v4.0.1 (critères d'entrée et de sortie) et des plans
+de test classiques (suspension, reprise). Aucune certification ISTQB n'est revendiquée.
+
+| Point de l'énoncé | Où le trouver |
+| :--- | :--- |
+| Plan de test (à réaliser) | ce document |
+| Scripts E2E (à réaliser) | `tests/` |
+| Orchestration et automatisation (à réaliser) | `.github/workflows/` |
+| Packaging et déploiement (à réaliser) | `Dockerfile`, `docker-compose.yml`, `.github/workflows/image.yml` |
+| Reporting (à expliquer) | rapports HTML et JUnit en artefact ; détail à venir dans ce plan |
+| Politique de planification (à expliquer) | smoke à chaque push, régression chaque nuit ; détail à venir dans ce plan |
+| Gestion de version et des données (à expliquer) | à venir dans ce plan |
+
+**Origine des constats.** Un comportement marqué « vu » a été observé dans le navigateur. Un comportement marqué
+« à confirmer » est lu dans le code public de l'éditeur (`github.com/saucelabs/sample-app-web`) et n'est confirmé
+qu'à la première exécution réelle.
