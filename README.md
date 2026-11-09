@@ -6,17 +6,17 @@ récurrente sur GitHub Actions.
 [![Smoke](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml)
 [![Régression](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml)
 
-## État au 08/11/2026
+## État au 09/11/2026
 
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
-| Régression planifiée (cron) | en place, premier tir prévu la nuit du 08 au 09/11 |
+| Régression planifiée (cron) | en place ; aucun tir planifié observé au 09/11 (GitHub ne garantit pas l'heure des tâches planifiées) |
 | Image de test publiée sur GHCR | construite, vérifiée, utilisée par la CI |
 | `docker compose run` | écrit, **pas encore exécuté** |
-| Plan de test | en cours de rédaction : [`docs/plan-de-test.md`](docs/plan-de-test.md) |
+| Plan de test | en cours de rédaction (résumé, objet, périmètre) : [`docs/plan-de-test.md`](docs/plan-de-test.md) |
 
 ## Les tests
 
