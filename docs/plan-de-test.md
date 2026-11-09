@@ -31,3 +31,16 @@ de test classiques (suspension, reprise). Aucune certification ISTQB n'est reven
 **Origine des constats.** Un comportement marqué « vu » a été observé dans le navigateur. Un comportement marqué
 « à confirmer » est lu dans le code public de l'éditeur (`github.com/saucelabs/sample-app-web`) et n'est confirmé
 qu'à la première exécution réelle.
+
+## 3. Périmètre
+
+| Dans le périmètre | Hors périmètre | Raison |
+| :--- | :--- | :--- |
+| Connexion : nominale, 3 erreurs, utilisateur bloqué | Charge et performance réelle | Site public tiers : on ne le charge pas |
+| Accès direct sans session | Sécurité offensive | Site tiers, non autorisé |
+| Inventaire : 6 produits, 4 tris | Accessibilité automatisée, comparaison de captures | Hors socle, évolutions possibles |
+| Fiche produit | Pages « Dynamic Catalog » et `inventory-long` | Hors énoncé |
+| Panier : ajout, retrait, badge, persistance | Téléchargement du PDF de commande | Non vérifié |
+| Commande en 3 étapes, calculs | Expiration de la session (10 minutes) | Test trop long |
+| Menu : déconnexion, remise à zéro, liens | Accès direct à l'étape 2 ou 3 de la commande | Connu dans le code, non testé |
+| Les 6 comptes publics | Tests de composants, d'intégration, d'API ; profil mobile | Pas d'accès au code du site |
