@@ -6,11 +6,12 @@ récurrente sur GitHub Actions.
 [![Smoke](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml)
 [![Régression](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml)
 
-## État au 09/11/2026
+## État au 10/11/2026
 
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
+| 4 tests de régression (TC-05 à TC-08) | verts en local (Windows, Chromium) |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
 | Régression planifiée (cron) | en place ; aucun tir planifié observé au 09/11 (GitHub ne garantit pas l'heure des tâches planifiées) |
@@ -26,8 +27,12 @@ récurrente sur GitHub Actions.
 | TC-02 | Page interne sans session | retour à l'accueil avec le message d'accès, pour `/inventory.html` et `/cart.html` |
 | TC-03 | Ajout d'un produit au panier | badge « 1 », bouton « Remove » |
 | TC-04 | Commande complète | page de confirmation, panier vide |
+| TC-05 | Connexion de `locked_out_user` | message « locked out », reste sur l'accueil |
+| TC-06 | Mauvais mot de passe | message d'erreur, reste sur l'accueil |
+| TC-07 | Tri par prix croissant | 6 prix dans l'ordre croissant, de 7.99 à 49.99 |
+| TC-08 | Résumé de commande avec 2 produits | sous-total 39.98, taxe de 8 %, total = sous-total + taxe |
 
-Les 4 cas portent les étiquettes `@smoke` et `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
+TC-01 à TC-04 portent les étiquettes `@smoke` et `@regression` ; TC-05 à TC-08, `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
 
 ## Lancer les tests
 
