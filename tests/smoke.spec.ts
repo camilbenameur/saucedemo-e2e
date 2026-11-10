@@ -1,13 +1,5 @@
-import { test, expect, type Page } from '@playwright/test';
-
-const PASSWORD = process.env.SAUCE_PASSWORD ?? 'secret_sauce';
-
-async function login(page: Page, username = 'standard_user') {
-  await page.goto('/');
-  await page.getByTestId('username').fill(username);
-  await page.getByTestId('password').fill(PASSWORD);
-  await page.getByTestId('login-button').click();
-}
+import { test, expect } from '@playwright/test';
+import { login } from './support/login';
 
 test.describe('Smoke', { tag: ['@smoke', '@regression'] }, () => {
   test('TC-01 connexion nominale', async ({ page, context }) => {
