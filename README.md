@@ -11,10 +11,10 @@ récurrente sur GitHub Actions.
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
-| 4 tests de régression (TC-05 à TC-08) | verts en local (Windows, Chromium) |
+| 4 tests de régression (TC-05 à TC-08) | verts en local (Windows, Chromium) et en CI sur les 3 navigateurs |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
-| Régression planifiée (cron) | en place ; aucun tir planifié observé au 09/11 (GitHub ne garantit pas l'heure des tâches planifiées) |
+| Régression planifiée (cron) | verte ; tirs observés le 09/11 à 08:00 UTC et le 10/11 à 08:27 UTC, soit environ 7 h après l'heure prévue (01:17 UTC) : GitHub ne garantit pas l'heure des tâches planifiées |
 | Image de test publiée sur GHCR | construite, vérifiée, utilisée par la CI |
 | `docker compose run` | écrit, **pas encore exécuté** |
 | Plan de test | en cours de rédaction (résumé, objet, périmètre) : [`docs/plan-de-test.md`](docs/plan-de-test.md) |
