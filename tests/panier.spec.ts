@@ -40,4 +40,14 @@ test.describe('Panier', { tag: '@regression' }, () => {
     await login(page);
     await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');
   });
+
+  test("TC-14 retrait depuis l'inventaire", async ({ page }) => {
+    await login(page);
+    await ajouterAuPanier(page, ['sauce-labs-backpack']);
+    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');
+
+    await page.getByTestId('remove-sauce-labs-backpack').click();
+    await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);
+    await expect(page.getByTestId('add-to-cart-sauce-labs-backpack')).toBeVisible();
+  });
 });

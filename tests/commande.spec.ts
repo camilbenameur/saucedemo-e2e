@@ -36,6 +36,24 @@ test.describe('Commande', { tag: '@regression' }, () => {
     expect(await montant(page.getByTestId('total-label'))).toBe(69.08);
   });
 
+  test('TC-15 calcul avec les 6 produits', async ({ page }) => {
+    await login(page);
+    await ajouterAuPanier(page, [
+      'sauce-labs-backpack',
+      'sauce-labs-bike-light',
+      'sauce-labs-bolt-t-shirt',
+      'sauce-labs-fleece-jacket',
+      'sauce-labs-onesie',
+      'test.allthethings()-t-shirt-(red)',
+    ]);
+    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('6');
+    await allerAuResume(page);
+    await expect(page.getByTestId('inventory-item')).toHaveCount(6);
+    await verifierCalcul(page, 129.94);
+    expect(await montant(page.getByTestId('tax-label'))).toBe(10.4);
+    expect(await montant(page.getByTestId('total-label'))).toBe(140.34);
+  });
+
   test('TC-13 étape 1, prénom manquant', async ({ page }) => {
     await login(page);
     await ajouterAuPanier(page, ['sauce-labs-backpack']);
