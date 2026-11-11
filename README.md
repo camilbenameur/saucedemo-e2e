@@ -11,7 +11,7 @@ récurrente sur GitHub Actions.
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
-| 9 tests de régression (TC-05 à TC-13) | verts en local (Windows, Chromium) et en CI sur les 3 navigateurs |
+| 11 tests de régression (TC-05 à TC-15) | verts en local (Windows, Chromium) et en CI sur les 3 navigateurs |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
 | Régression planifiée (cron) | verte ; tirs observés le 09/11 à 08:00 UTC et le 10/11 à 08:27 UTC, soit environ 7 h après l'heure prévue (01:17 UTC) : GitHub ne garantit pas l'heure des tâches planifiées |
@@ -36,8 +36,10 @@ récurrente sur GitHub Actions.
 | TC-11 | Résumé de commande avec 4 produits | sous-total 63.96 (affiché « 63.959999999999994 » par le site), taxe 5.12, total 69.08 |
 | TC-12 | Connexion sans identifiants | message « Username is required » |
 | TC-13 | Étape 1 de la commande sans prénom | message « First Name is required », reste à l'étape 1 |
+| TC-14 | Retrait d'un produit depuis l'inventaire | plus de badge, bouton « Add to cart » revenu |
+| TC-15 | Résumé de commande avec les 6 produits | badge « 6 », 6 lignes, sous-total 129.94, taxe 10.40, total 140.34 |
 
-TC-01 à TC-04 portent les étiquettes `@smoke` et `@regression` ; TC-05 à TC-13, `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
+TC-01 à TC-04 portent les étiquettes `@smoke` et `@regression` ; TC-05 à TC-15, `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
 
 ## Lancer les tests
 
