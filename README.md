@@ -11,7 +11,7 @@ récurrente sur GitHub Actions.
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
-| 9 tests de régression (TC-05 à TC-13) | verts en local (Windows, Chromium) ; TC-05 à TC-08 verts en CI sur les 3 navigateurs |
+| 9 tests de régression (TC-05 à TC-13) | verts en local (Windows, Chromium) et en CI sur les 3 navigateurs |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
 | Régression planifiée (cron) | verte ; tirs observés le 09/11 à 08:00 UTC et le 10/11 à 08:27 UTC, soit environ 7 h après l'heure prévue (01:17 UTC) : GitHub ne garantit pas l'heure des tâches planifiées |
