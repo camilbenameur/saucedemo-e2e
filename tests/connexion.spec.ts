@@ -18,4 +18,11 @@ test.describe('Connexion', { tag: '@regression' }, () => {
     );
     await expect(page).toHaveURL(/\/$/);
   });
+
+  test('TC-12 champs vides', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('login-button').click();
+    await expect(page.getByTestId('error')).toHaveText('Epic sadface: Username is required');
+    await expect(page).toHaveURL(/\/$/);
+  });
 });
