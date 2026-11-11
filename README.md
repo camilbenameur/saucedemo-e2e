@@ -6,12 +6,12 @@ récurrente sur GitHub Actions.
 [![Smoke](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/smoke.yml)
 [![Régression](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml/badge.svg)](https://github.com/camilbenameur/saucedemo-e2e/actions/workflows/regression.yml)
 
-## État au 10/11/2026
+## État au 11/11/2026
 
 | Élément | État |
 | :--- | :--- |
 | 4 tests du smoke (TC-01 à TC-04) | verts en local (Windows) et en CI |
-| 4 tests de régression (TC-05 à TC-08) | verts en local (Windows, Chromium) et en CI sur les 3 navigateurs |
+| 9 tests de régression (TC-05 à TC-13) | verts en local (Windows, Chromium) ; TC-05 à TC-08 verts en CI sur les 3 navigateurs |
 | Smoke à chaque push | vert, Chromium |
 | Régression sur Chromium, Firefox et WebKit | verte en lancement manuel |
 | Régression planifiée (cron) | verte ; tirs observés le 09/11 à 08:00 UTC et le 10/11 à 08:27 UTC, soit environ 7 h après l'heure prévue (01:17 UTC) : GitHub ne garantit pas l'heure des tâches planifiées |
@@ -31,8 +31,13 @@ récurrente sur GitHub Actions.
 | TC-06 | Mauvais mot de passe | message d'erreur, reste sur l'accueil |
 | TC-07 | Tri par prix croissant | 6 prix dans l'ordre croissant, de 7.99 à 49.99 |
 | TC-08 | Résumé de commande avec 2 produits | sous-total 39.98, taxe de 8 %, total = sous-total + taxe |
+| TC-09 | Contenu du panier | 2 lignes (nom, prix, quantité 1), retrait d'une ligne, retour aux produits |
+| TC-10 | Panier après rechargement et déconnexion | badge « 1 » conservé |
+| TC-11 | Résumé de commande avec 4 produits | sous-total 63.96 (affiché « 63.959999999999994 » par le site), taxe 5.12, total 69.08 |
+| TC-12 | Connexion sans identifiants | message « Username is required » |
+| TC-13 | Étape 1 de la commande sans prénom | message « First Name is required », reste à l'étape 1 |
 
-TC-01 à TC-04 portent les étiquettes `@smoke` et `@regression` ; TC-05 à TC-08, `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
+TC-01 à TC-04 portent les étiquettes `@smoke` et `@regression` ; TC-05 à TC-13, `@regression`. Les sélecteurs utilisent l'attribut `data-test` du site.
 
 ## Lancer les tests
 
